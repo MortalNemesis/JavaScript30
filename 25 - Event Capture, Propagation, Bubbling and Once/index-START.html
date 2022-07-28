@@ -42,7 +42,18 @@
 
 <button></button>
 <script>
+  const divs = document.querySelectorAll('div');
+  function logText(e) {
+    // bubbling will start from top and go to bottom, once there will trigger events from bot-top
+    // { capture: true }, start from top and trigger events from top-bot
+    // e.stopPropagation() will prevent further bubbling
+    // { once: true } will remove the event listener after running once (like for store checkout)
+    console.log(this.classList.value);
+  }
 
+  divs.forEach(div => {
+    div.addEventListener('click', logText);
+  });
 </script>
 </body>
 </html>
